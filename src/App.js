@@ -43,6 +43,14 @@ class App extends Component {
     }
   }
 
+  onReset = () => {
+    this.setState({
+      state: 'waiting'
+      , message: 'Click to Start!'
+      , result: []
+    })
+  }
+
   renderAverage = () => {
     const {result} = this.state;
     // if (result.length === 0 ) {
@@ -56,6 +64,19 @@ class App extends Component {
       : <>
           <div>Try count: {result.length}</div>
           <div>Average Time: {result.reduce((a, c) => a + c) / result.length}ms</div>
+          <div>
+            <h3>History</h3>
+            <ul>
+              {result.map((v, i) => {
+                return (
+                  <li key={v + 'rc' + i}>{i + 1}Round: {v}ms</li>
+                )
+              })}
+            </ul>
+          </div>
+          <div>
+            <button onClick={this.onReset}>RESET</button>
+          </div>
         </>
     )
   }
