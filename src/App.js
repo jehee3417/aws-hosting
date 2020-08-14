@@ -23,7 +23,7 @@ class App extends Component {
           , message: 'Click now!!!'
         });
         this.startTime = new Date();
-      }, Math.floor(Math.random() * 1000) + 2000);
+      }, Math.floor(Math.random() * 3000) + 2000);
     } else if (state === 'ready') {
       clearTimeout(this.timeout);
       this.setState({
